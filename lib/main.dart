@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +25,19 @@ class HomeHitungLuasLingkaran extends StatefulWidget {
 }
 
 class _HomeHitungLuasLingkaranState extends State<HomeHitungLuasLingkaran> {
+  double hasil = 0;
+
+  TextEditingController phi = new TextEditingController();
+  TextEditingController jariJari = new TextEditingController();
+
+  void _calculate() {
+    setState(() {
+      double valJari = double.parse(jariJari.text);
+      double valPhi = double.parse(phi.text);
+
+      hasil = (pow(valJari, 2) * valPhi);
+    });
+  }
  
   @override
   Widget build(BuildContext context) {
@@ -48,6 +63,7 @@ class _HomeHitungLuasLingkaranState extends State<HomeHitungLuasLingkaran> {
         SizedBox(height: 20,),
         TextFormField(
           keyboardType: TextInputType.number,
+          controller: phi,
           decoration: InputDecoration(
             labelText: "Input phi",
             hintText: "Masukan value phi",
@@ -59,6 +75,7 @@ class _HomeHitungLuasLingkaranState extends State<HomeHitungLuasLingkaran> {
 
         TextFormField(
           keyboardType: TextInputType.number,
+          controller: jariJari,
           decoration: InputDecoration(
               labelText: "Input jari jari",
               hintText: "Masukan value jari jari",
@@ -78,11 +95,14 @@ class _HomeHitungLuasLingkaranState extends State<HomeHitungLuasLingkaran> {
               child: Center(
                 child: Text("Hitung", style: TextStyle(color: Colors.white),),
               ),
-              onTap: (){
-               print('hasilnya kamu tampilin disini');
-              },
+              onTap: _calculate
             ),
           ),
+        ),
+
+        Text(
+          '$hasil',
+          style: TextStyle(fontSize: 45),
         )
       ],
     );
