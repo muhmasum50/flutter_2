@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Hitung Luas Lingkaran"),
+          title: Text("UTS TOPIK KUSUS"),
           backgroundColor: Colors.blueAccent,
         ),
         body: Container(
